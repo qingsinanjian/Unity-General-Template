@@ -153,7 +153,8 @@ namespace I2.Loc
             
             var assetName = GetLanguageAssetName(language);
 
-            var assetTextAsset = await YIUILoadHelper.LoadAssetAsync<TextAsset>(assetName);
+            //var assetTextAsset = await YIUILoadHelper.LoadAssetAsync<TextAsset>(assetName);
+            var assetTextAsset = Resources.Load<TextAsset>($"I2Localization/{assetName}");
             if (assetTextAsset == null)
             {
                 Debug.LogError($"没有加载到目标语言资源 {language}");
@@ -169,7 +170,7 @@ namespace I2.Loc
             }
 
             //语言加载完毕后就可以释放资源了
-            YIUILoadHelper.Release(assetTextAsset);
+            //YIUILoadHelper.Release(assetTextAsset);
         }
 
         private string GetLanguageAssetName(string language)
